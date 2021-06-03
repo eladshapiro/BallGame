@@ -13,7 +13,7 @@ public class Game extends JPanel implements KeyListener, ActionListener
   private int score=0;
   private int totalBricks=21;
   private Timer time;
-  private int delay;
+  private int delay=8;
   private int playerX=Definitions.PLAYER_X;
   private int ballPosX=Definitions.BALL_POS_X;
   private int ballposY=Definitions.BALL_POS_Y;
