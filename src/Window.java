@@ -21,6 +21,8 @@ public class Window extends JFrame
             this.setLayout(null);
             this.setResizable(false);
             this.setLocationRelativeTo(null);
+            Game game=new Game();
+            this.add(game);
         }
 
         public void paint (Graphics graphics) {
