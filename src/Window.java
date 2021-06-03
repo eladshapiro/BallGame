@@ -11,6 +11,7 @@ public class Window extends JFrame
             window.setTitle("ball Game");
             window.setResizable(false);
             window.setVisible(true);
+            window.setLocationRelativeTo(null);
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.add(game);
         }
