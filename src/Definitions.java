@@ -7,6 +7,7 @@ public class Definitions
         public static final int BALL_POS_Y = 350;
         public static final int BALL_X_DIR = -1;
         public static final int BALL_Y_DIR = -2;
+        public static final int PlAYER_LINE_MOVE=20;
 
 
 
