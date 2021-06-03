@@ -108,8 +108,8 @@ repaint();
 
     }
     if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      if (playerX < 600) {
-        playerX = 10;
+      if (playerX < 0) {
+        playerX = 0;
       } else {
         moveLeft();
       }
@@ -139,7 +139,7 @@ repaint();
   public  void moveLeft()
   {
     play=true;
-    playerX+=Definitions.PlAYER_LINE_MOVE;
+    playerX-=Definitions.PlAYER_LINE_MOVE;
   }
   public void keyReleased(KeyEvent e)
   {
