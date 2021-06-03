@@ -36,7 +36,7 @@ public void paint(Graphics graphics)
   graphics.setColor(Color.RED);        //border
   graphics.fillRect(0,0,3,592);
   graphics.fillRect(0,0,692,3);
-  graphics.fillRect(691,0,3,592);
+  graphics.fillRect(679,0,3,592);
 
   graphics.setColor(Color.MAGENTA); //the players line
   graphics.fillRect(playerX,550,100,8);
@@ -53,9 +53,9 @@ public void paint(Graphics graphics)
 time.start();
 if (play)
 {
-  if (new Rectangle(ballPosX, ballposY, 20,20).intersects(new Rectangle(playerX,550,100,8)))
+  if (new Rectangle(ballPosX, ballposY, 20,20).intersects(new Rectangle(playerX,550,100,8))) // bounce of the player line
   {
-ballYdir=-ballYdir;
+ballYdir=(-1)*ballYdir;
   }
   ballposY+=ballXdir;
   ballposY+=ballYdir;
