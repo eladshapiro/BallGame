@@ -10,10 +10,10 @@ import java.nio.CharBuffer;
 public class Game extends JPanel implements KeyListener, ActionListener
 {
   private boolean play=false;
-  private int score=0;
-  private int totalBricks=21;
+ // private int score=Definitions.START_SCORE;
+ // private int totalBricks=Definitions.TOTAL_BRICKS;
   private Timer time;
-  private int delay=8;
+  private int delay=Definitions.DELAY;
   private int playerX=Definitions.PLAYER_X;
   private int ballPosX=Definitions.BALL_POS_X;
   private int ballposY=Definitions.BALL_POS_Y;
@@ -30,20 +30,35 @@ public Game()
 }
 public void paint(Graphics graphics)
 {
-  graphics.setColor(Color.PINK); //background
-  graphics.fillRect(1,1,692,592);
+  graphics.setColor(Color.YELLOW); //background
+  graphics.fillRect(Definitions.WINDOW_X_START,Definitions.WINDOW_Y_START,Definitions.WINDOW_WIDTH,Definitions.WINDOW_HEIGHT);
 
-  graphics.setColor(Color.RED);        //border
-  graphics.fillRect(0,0,3,592);
-  graphics.fillRect(0,0,692,3);
-  graphics.fillRect(679,0,3,592);
+  graphics.setColor(Color.BLACK);        //border
+  graphics.fillRect(Definitions.WINDOW_X_START,Definitions.WINDOW_Y_START,Definitions.BORDER_THICKNESS,Definitions.WINDOW_HEIGHT);
+  graphics.fillRect(Definitions.WINDOW_X_START,Definitions.WINDOW_Y_START,Definitions.WINDOW_WIDTH,Definitions.BORDER_THICKNESS);
+  graphics.fillRect(Definitions.WINDOW_WIDTH-21,Definitions.WINDOW_Y_START,Definitions.BORDER_THICKNESS,Definitions.WINDOW_HEIGHT);
 
   graphics.setColor(Color.MAGENTA); //the players line
-  graphics.fillRect(playerX,550,100,8);
+  graphics.fillRect(playerX,Definitions.PLAYER_Y,Definitions.LINE_WIDTH,Definitions.LINE_HEIGHT);
 
-  graphics.setColor(Color.WHITE); // ball
-  graphics.fillOval(ballPosX,ballposY,20,20);
+  graphics.setColor(Color.BLACK); // ball
+  graphics.fillOval(ballPosX,ballposY,Definitions.BALL_WIDTH,Definitions.BALL_HEIGHT);
 
+  if (ballposY>Definitions.WINDOW_HEIGHT)
+  {
+    play=false;
+    ballYdir=Definitions.STOP_BALL_Y;
+    ballXdir=Definitions.STOP_BALL_X;
+    graphics.setColor(Color.RED);
+    graphics.setFont(new Font("david",Font.BOLD,Definitions.GAME_OVER_FONT_SIZE));
+    graphics.drawString("Game over!",Definitions.GAME_OVER_X,Definitions.GAME_OVER_Y);
+
+    graphics.setColor(Color.BLACK);
+    graphics.setFont(new Font("david",Font.BOLD,Definitions.RESTART_FONT_SIZE));
+    graphics.drawString("press enter to play again",Definitions.RESTART_X,Definitions.RESTART_Y);
+
+  }
+  graphics.dispose();
 }
 
   private void setFocusTraversalKeys(boolean b) {
@@ -53,35 +68,37 @@ public void paint(Graphics graphics)
 time.start();
 if (play)
 {
-  if (new Rectangle(ballPosX, ballposY, 20,20).intersects(new Rectangle(playerX,550,100,8))) // bounce of the player line
+  if (new Rectangle(ballPosX, ballposY, Definitions.BALL_WIDTH,Definitions.BALL_HEIGHT).intersects(new Rectangle(playerX,Definitions.PLAYER_Y,Definitions.LINE_WIDTH,Definitions.LINE_HEIGHT))) // bounce of the player line
   {
-ballYdir=(-1)*ballYdir;
+ballYdir=-ballYdir;
   }
-  ballposY+=ballXdir;
+  ballPosX+=ballXdir;
   ballposY+=ballYdir;
 
-  if(ballPosX<0)
+  if(ballPosX<Definitions.WINDOW_X_START)
   {
     ballXdir=-ballXdir;  //replace the dirction
   }
 
-  if(ballposY<0)
+  if(ballposY<Definitions.WINDOW_Y_START)
   {
     ballYdir=-ballYdir;  //replace the dirction
   }
 
-  if(ballPosX>670)
+  if(ballPosX>Definitions.WINDOW_WIDTH-Definitions.BORDER_BUG)
   {
     ballXdir=-ballXdir;  //replace the dirction
   }
+
 }
 repaint();
   }
-  public void keyTyped(KeyEvent e) {
-
+  public void keyTyped(KeyEvent e)
+  {
   }
 
-  public void keyPressed(KeyEvent e) {
+  public void keyPressed(KeyEvent e)
+  {
     if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
       if (playerX >= 600) {
         playerX = 600;
@@ -96,9 +113,23 @@ repaint();
       } else {
         moveLeft();
       }
+    }
+
+      if (e.getKeyCode() == KeyEvent.VK_ENTER)
+      {
+        if (!play)
+        {
+          ballPosX=Definitions.BALL_POS_X;
+          ballposY=Definitions.BALL_POS_Y;
+          ballXdir=-Definitions.BALL_X_DIR;
+          ballYdir=-Definitions.BALL_Y_DIR;
+          playerX=Definitions.PLAYER_X;
+
+          repaint();
+        }
+      }
 
     }
-  }
   public void moveRight()
   {
     play=true;
@@ -110,9 +141,7 @@ repaint();
     play=true;
     playerX+=Definitions.PlAYER_LINE_MOVE;
   }
-
-  @Override
-  public void keyReleased(KeyEvent e) {
-
+  public void keyReleased(KeyEvent e)
+  {
   }
 }

@@ -7,7 +7,7 @@ public class Window extends JFrame
         {
             JFrame window=new JFrame();
             Game game=new Game();
-            window.setBounds(10,10,700,600);
+            window.setBounds(Definitions.WINDOW_X_START,Definitions.WINDOW_Y_START,Definitions.WINDOW_WIDTH,Definitions.WINDOW_HEIGHT);
             window.setTitle("ball Game");
             window.setResizable(false);
             window.setVisible(true);
