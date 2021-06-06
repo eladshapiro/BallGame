@@ -45,9 +45,9 @@ public void paint(Graphics graphics)
   graphics.setColor(Color.BLACK); // ball
   graphics.fillOval(ballPosX,ballposY,Definitions.BALL_WIDTH,Definitions.BALL_HEIGHT);
 
-  graphics.setColor(Color.white);
-  graphics.setFont(new Font("david",Font.BOLD,20));
-  graphics.drawString("score:"+score,20,20);
+  graphics.setColor(Color.BLUE);
+  graphics.setFont(new Font("david",Font.BOLD,Definitions.SCORE_SIZE));
+  graphics.drawString("score:"+score,Definitions.SCORE_X,Definitions.SCORE_Y);
 
 
   if (ballposY>Definitions.WINDOW_HEIGHT)
@@ -62,6 +62,9 @@ public void paint(Graphics graphics)
     graphics.setColor(Color.BLACK);
     graphics.setFont(new Font("david",Font.BOLD,Definitions.RESTART_FONT_SIZE));
     graphics.drawString("press enter to play again",Definitions.RESTART_X,Definitions.RESTART_Y);
+    graphics.setColor(Color.BLUE);
+    graphics.setFont(new Font("david",Font.BOLD,Definitions.SCORE_SIZE));
+    graphics.drawString("score:"+score,Definitions.SCORE_RESTART_X,Definitions.SCORE_RESTART_Y);
 
   }
   graphics.dispose();

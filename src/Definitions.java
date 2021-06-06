@@ -12,7 +12,6 @@ public class Definitions
         public static final int WINDOW_X_START=0;
         public static final int WINDOW_Y_START=0;
         public static final int START_SCORE=0;
-       // public static final int TOTAL_BRICKS=21;
         public static final int DELAY=8;
         public static final int BORDER_THICKNESS=3;
         public static final int LINE_WIDTH=100;
@@ -28,8 +27,13 @@ public class Definitions
         public static final int RESTART_X=(WINDOW_WIDTH/2-180)+70;
         public static final int RESTART_Y=(WINDOW_HEIGHT/2-20)+70;
         public static final int RESTART_FONT_SIZE=20;
-    public static final int RESTART_WIDTH=100;
-    public static final int RESTART_HEIGHT=30;
+        public static final int RESTART_WIDTH=100;
+        public static final int RESTART_HEIGHT=30;
+        public static final int SCORE_RESTART_X=300;
+        public static final int SCORE_RESTART_Y=400;
+        public static final int SCORE_SIZE=25;
+        public static final int SCORE_X=20;
+        public static final int SCORE_Y=20;
 
 
 
