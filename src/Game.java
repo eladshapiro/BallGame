@@ -19,6 +19,7 @@ public class Game extends JPanel implements KeyListener, ActionListener
   private int ballposY=Definitions.BALL_POS_Y;
   private int ballXdir=-Definitions.BALL_X_DIR;
   private int ballYdir=-Definitions.BALL_Y_DIR;
+  private  int score=Definitions.START_SCORE;
 
 public Game()
 {
@@ -43,6 +44,11 @@ public void paint(Graphics graphics)
 
   graphics.setColor(Color.BLACK); // ball
   graphics.fillOval(ballPosX,ballposY,Definitions.BALL_WIDTH,Definitions.BALL_HEIGHT);
+
+  graphics.setColor(Color.white);
+  graphics.setFont(new Font("david",Font.BOLD,20));
+  graphics.drawString("score:"+score,20,20);
+
 
   if (ballposY>Definitions.WINDOW_HEIGHT)
   {
@@ -71,6 +77,7 @@ if (play)
   if (new Rectangle(ballPosX, ballposY, Definitions.BALL_WIDTH,Definitions.BALL_HEIGHT).intersects(new Rectangle(playerX,Definitions.PLAYER_Y,Definitions.LINE_WIDTH,Definitions.LINE_HEIGHT))) // bounce of the player line
   {
 ballYdir=-ballYdir;
+score++;
   }
   ballPosX+=ballXdir;
   ballposY+=ballYdir;
@@ -124,6 +131,7 @@ repaint();
           ballXdir=-Definitions.BALL_X_DIR;
           ballYdir=-Definitions.BALL_Y_DIR;
           playerX=Definitions.PLAYER_X;
+          score=Definitions.START_SCORE;
 
           repaint();
         }

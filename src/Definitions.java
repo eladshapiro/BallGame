@@ -11,7 +11,7 @@ public class Definitions
         public static final int PlAYER_LINE_MOVE=20;
         public static final int WINDOW_X_START=0;
         public static final int WINDOW_Y_START=0;
-       // public static final int START_SCORE=0;
+        public static final int START_SCORE=0;
        // public static final int TOTAL_BRICKS=21;
         public static final int DELAY=8;
         public static final int BORDER_THICKNESS=3;
