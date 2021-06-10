@@ -3,17 +3,19 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Game extends JPanel implements KeyListener  {
+public class Game extends JPanel  {
   private Ball ball;
   private Player player;
   private static int score;
   private boolean play;
+  private int gameSpeed;
 
   public Game() {
     this.ball = new Ball();
     this.player=new Player();
     score=Definitions.START_SCORE;
     play=true;
+    gameSpeed=Definitions.START_GAME_SPEED;
 
   }
 
@@ -49,6 +51,14 @@ public class Game extends JPanel implements KeyListener  {
     Game.score = score;
   }
 
+  public int getGameSpeed() {
+    return gameSpeed;
+  }
+
+  public void setGameSpeed(int gameSpeed) {
+    this.gameSpeed = gameSpeed;
+  }
+
   public void paint(Graphics graphics){
     ball.paint(graphics);
     player.paint(graphics);
@@ -59,6 +69,10 @@ public class Game extends JPanel implements KeyListener  {
     {
       this.ball.setBallYDir(-this.ball.getBallYDir());
       score++;
+      if(score%Definitions.NEXT_LAVEL==0){
+        gameSpeed--;
+        this.player.setPlayerWidth(this.player.getPlayerWidth()-1);
+      }
 
     }
 
@@ -73,24 +87,6 @@ public class Game extends JPanel implements KeyListener  {
 
     }
     return false;
-
-  }
-
-  @Override
-  public void keyTyped(KeyEvent e) {
-
-  }
-
-  @Override
-  public void keyPressed(KeyEvent e) {
-    if (e.getKeyCode() == KeyEvent.VK_ENTER)
-    {
-
-    }
-  }
-
-  @Override
-  public void keyReleased(KeyEvent e) {
 
   }
 

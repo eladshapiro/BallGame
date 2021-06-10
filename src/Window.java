@@ -70,7 +70,7 @@ public class Window extends JFrame {
                 }
                 repaint();
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(this.game.getGameSpeed());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

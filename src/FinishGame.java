@@ -21,7 +21,9 @@ public class FinishGame implements KeyListener {
             this.game.getBall().setBallXDir(Definitions.BALL_X_DIR);
             this.game.getBall().setBallYDir(Definitions.BALL_Y_DIR);
             this.game.getPlayer().setPlayerX(Definitions.PLAYER_X);
+            this.game.getPlayer().setPlayerWidth(Definitions.LINE_WIDTH);
             this.game.setScore(Definitions.START_SCORE);
+            this.game.setGameSpeed(Definitions.START_GAME_SPEED);
             this.game.setPlay(true);
         }
 
