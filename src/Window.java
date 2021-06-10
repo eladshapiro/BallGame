@@ -35,13 +35,16 @@ public class Window extends JFrame {
         g.setColor(Color.YELLOW); //background
         g.fillRect(Definitions.WINDOW_X_START, Definitions.WINDOW_Y_START, Definitions.WINDOW_WIDTH, Definitions.WINDOW_HEIGHT);
         this.game.paint(g);
+
         g.setColor(Color.BLACK);        //border
         g.fillRect(Definitions.WINDOW_X_BORDER_RIGHT, Definitions.WINDOW_Y_START, Definitions.BORDER_THICKNESS, Definitions.WINDOW_HEIGHT);
         g.fillRect(Definitions.WINDOW_X_START, Definitions.WINDOW_Y_BORDER_START, Definitions.WINDOW_WIDTH, Definitions.BORDER_THICKNESS);
         g.fillRect(Definitions.WINDOW_X_BORDER_LEFT, Definitions.WINDOW_Y_START, Definitions.BORDER_THICKNESS, Definitions.WINDOW_HEIGHT);
+
         g.setColor(Color.BLUE);
         g.setFont(new Font("david",Font.BOLD,Definitions.SCORE_SIZE));
         g.drawString("score:"+this.game.getScore(),Definitions.SCORE_X,Definitions.SCORE_Y);
+
         if(!this.game.isPlay()){
             g.setColor(Color.RED);
             g.setFont(new Font("david",Font.BOLD,Definitions.GAME_OVER_FONT_SIZE));

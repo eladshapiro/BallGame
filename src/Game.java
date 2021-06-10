@@ -69,7 +69,7 @@ public class Game extends JPanel  {
     {
       this.ball.setBallYDir(-this.ball.getBallYDir());
       score++;
-      if(score%Definitions.NEXT_LAVEL==0){
+      if(score%Definitions.NEXT_LEVEL==0){
         gameSpeed--;
         this.player.setPlayerWidth(this.player.getPlayerWidth()-1);
       }

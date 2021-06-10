@@ -35,8 +35,8 @@ public class Definitions
         public static final int WINDOW_X_BORDER_RIGHT=3;
         public static final int WINDOW_Y_BORDER_START=33;
         public static final int WINDOW_X_BORDER_LEFT=WINDOW_WIDTH -6;
-        public static final int START_GAME_SPEED=10;
-        public static final int NEXT_LAVEL=10;
+        public static final int START_GAME_SPEED=15;
+        public static final int NEXT_LEVEL=3;
 
 
 
